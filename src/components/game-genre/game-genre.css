@@ -3,7 +3,9 @@
     padding: 2px 8px 4px;
     font-size: 13px;
     border-radius: 10px;
+    margin-bottom: 7px;
 }
 .game-genre:not(:last-child){
     margin-right: 7px;
+    /* margin-bottom: 7px; */
 }
