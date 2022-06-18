@@ -17,7 +17,7 @@ export const GameItem = ({ game }) => {
 
     const handleClick = () => {
         dispatch(setCurrentGame(game))
-        navigate(`/app/${game.title}`)
+        navigate(`/app/${game.id}`)
     }
     return (
         <div

@@ -9,4 +9,6 @@
     display: flex;
     align-items: center;
     white-space: nowrap;
+    margin-left: auto;
+    padding-left: 10px;
 }

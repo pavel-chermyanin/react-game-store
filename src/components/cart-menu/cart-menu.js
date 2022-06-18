@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 
 
 
@@ -10,9 +10,28 @@ import { calcTotalPrice } from '../utils'
 import './cart-menu.css'
 
 
-export const CartMenu = ({ games = [], onClick }) => {
+export const CartMenu = ({ games = [], onClick, setIsCartMenuVisible, isCartMenuVisible }) => {
+    const menuRef = useRef(null)
+
+    useEffect(() => {
+        const handleClick = (e) => {
+            if (menuRef.current && !e.path.includes(menuRef.current)) {
+                isCartMenuVisible && setIsCartMenuVisible(false)
+            }
+        }
+
+        document.body.addEventListener('click', handleClick)
+
+        return () => {
+            document.body.removeEventListener('click', handleClick)
+        }
+    }, [isCartMenuVisible])
+
+
     return (
-        <div className="cart-menu">
+        <div
+            ref={menuRef}
+            className="cart-menu">
             <div className="cart-menu__games-list">
                 {
                     games.length > 0

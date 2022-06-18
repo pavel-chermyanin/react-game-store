@@ -1,0 +1,7 @@
+
+.order-page__right{
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+}

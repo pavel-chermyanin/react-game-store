@@ -1,16 +1,24 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import {useParams} from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import { GameCover } from '../../components/game-cover'
 import { GameGenre } from '../../components/game-genre'
 import { GameBuy } from '../../components/game-buy'
+import { GAMES } from '../home-page'
 
 
 import './game-page.css'
+import { setCurrentGame } from '../../redux/games/reducer'
 
 export const GamePage = () => {
     const game = useSelector(state => state.games.currentGame)
+    const dispatch = useDispatch()
+    const {id} = useParams()
 
-
+    if (id) {
+        const game = GAMES.find(game => game.id === Number(id))
+        dispatch(setCurrentGame(game))
+    }
     if (!game) return null
 
     return (
